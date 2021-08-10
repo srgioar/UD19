@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 public class Ejercicio2 extends JFrame {
 	
 	public Ejercicio2() {
-		setTitle("SALUDADOR");
+		setTitle("Insertor de películas");
 		setBounds(500, 200, 550, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
@@ -26,21 +26,19 @@ public class Ejercicio2 extends JFrame {
 		
 		setContentPane(contentPane);
 		
-		JLabel etiqueta = new JLabel("Escribe nombre");
-		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(100, 200, 140, 20);
-		contentPane.add(comboBox);
-		
-		etiqueta.setBounds(60, 20, 100, 20);
-		
+		JLabel etiqueta = new JLabel("Escribe nombre de la peli: ");
+		etiqueta.setBounds(100, 110, 180, 30);
 		contentPane.add(etiqueta);
 		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setBounds(100, 200, 180, 30);
+		contentPane.add(comboBox);
+		
 		final JTextField textField = new JTextField();
-		textField.setBounds(43, 67, 86, 26);
+		textField.setBounds(100, 140, 180, 30);
 		contentPane.add(textField);
-		JButton btn = new JButton("Pulsame");
-		btn.setBounds(160, 220, 80, 20);
+		JButton btn = new JButton("AÑADIR");
+		btn.setBounds(160, 260, 100, 20);
 		contentPane.add(btn);
 		
 		btn.addActionListener(new ActionListener() {

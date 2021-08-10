@@ -14,9 +14,53 @@ import javax.swing.JTextField;
 
 public class Ejercicio4 extends JFrame {
 	
-	int op1, op2, res;
+	String str1, str2, btnText;
+	Integer op1, op2, res;
 	String currentOp;
-	int contador = 0;
+	boolean op1free = true;
+	JTextField tOp1;
+	JTextField tOp2;
+	JTextField tRes;
+	
+	// Textfields para los operandos
+	
+	String checkContent(JButton btn) {
+		
+		int btnNum = 0;
+		
+		
+		if ((btnText.equals("+") || btnText.equals("-") || btnText.equals("*") || btnText.equals("/")) && tOp2.getText() != null) { 
+			op1free = false;
+			currentOp = btnText;
+		}
+		
+		else if (btnText.equals("0") || btnText.equals("1") || btnText.equals("2") || btnText.equals("3") || btnText.equals("4") || btnText.equals("5") || btnText.equals("6") || btnText.equals("7") || btnText.equals("8") || btnText.equals("9")) {
+			btnText += btn.getText();
+			btnNum = Integer.parseInt(btnText);
+			añadir(btnNum);
+		}
+		
+		else if (btnText.equals("=")){
+			if ((tOp1.getText() != null && tOp2.getText() != null))
+				calcular(op1, op2);
+		}
+		
+		return btnText;
+		
+	}
+	
+	void añadir(int valor) {
+		
+		if (op1free) {
+			tOp1.setText(Integer.toString(valor));
+			op1 = valor;
+		}
+		
+		else if (!op1free) {
+			tOp2.setText(Integer.toString(valor));
+			op2 = valor;
+		}
+	}
 	
 	int calcular(int op1, int op2){
 		int res = 0;
@@ -31,6 +75,7 @@ public class Ejercicio4 extends JFrame {
 			res = op1 / op2;
 			
 		}
+		tRes.setText(Integer.toString(res));
 		return res;
 	}
 	
@@ -46,107 +91,96 @@ public class Ejercicio4 extends JFrame {
 		
 		setContentPane(contentPane);
 		
-		// BOTONES
-		
-		JButton btn0 = new JButton("0");
-		btn0.setBounds(160, 220, 80, 20);
-		contentPane.add(btn0);
-		
-		JButton btn1 = new JButton("1");
-		btn1.setBounds(160, 220, 80, 20);
-		contentPane.add(btn1);
-		
-		JButton btn2 = new JButton("2");
-		btn2.setBounds(160, 220, 80, 20);
-		contentPane.add(btn2);
-		
-		JButton btn3 = new JButton("3");
-		btn3.setBounds(160, 220, 80, 20);
-		contentPane.add(btn3);
-		
-		JButton btn4 = new JButton("4");
-		btn4.setBounds(160, 220, 80, 20);
-		contentPane.add(btn4);
-		
-		JButton btn5 = new JButton("5");
-		btn5.setBounds(160, 220, 80, 20);
-		contentPane.add(btn5);
-		
-		JButton btn6 = new JButton("6");
-		btn6.setBounds(160, 220, 80, 20);
-		contentPane.add(btn6);
-		
-		JButton btn7 = new JButton("7");
-		btn7.setBounds(160, 220, 80, 20);
-		contentPane.add(btn7);
-		
-		JButton btn8 = new JButton("8");
-		btn8.setBounds(160, 220, 80, 20);
-		contentPane.add(btn8);
-		
-		JButton btn9 = new JButton("9");
-		btn9.setBounds(160, 220, 80, 20);
-		contentPane.add(btn9);
-		
-		JButton btnSuma = new JButton("+");
-		btnSuma.setBounds(160, 220, 80, 20);
-		contentPane.add(btnSuma);
-		
-		JButton btnResta = new JButton("-");
-		btnResta.setBounds(160, 220, 80, 20);
-		contentPane.add(btnResta);
-		
-		JButton btnMulti = new JButton("*");
-		btnMulti.setBounds(160, 220, 80, 20);
-		contentPane.add(btnMulti);
-		
-		JButton btnDiv = new JButton("/");
-		btnDiv.setBounds(160, 220, 80, 20);
-		contentPane.add(btnDiv);
-		
-		JButton btnRes = new JButton("=");
-		btnRes.setBounds(160, 220, 80, 20);
-		contentPane.add(btnRes);
-		
-		JButton[] arrayButtons = {btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnSuma, btnResta, btnMulti, btnDiv, btnRes};
-
-		// Textfields para los operandos
-		
-		JTextField tOp1 = new JTextField();
-		JTextField tOp2 = new JTextField();
-		JTextField tRes = new JTextField();
-		tOp1.setBounds(160, 220, 80, 20);
-		tOp2.setBounds(160, 220, 80, 20);
-		tRes.setBounds(160, 220, 80, 20);
+		tOp1 = new JTextField();
+		tOp2 = new JTextField();
+		tRes = new JTextField();
+		tOp1.setBounds(100, 40, 100, 30);
+		tOp2.setBounds(220, 40, 100, 30);
+		tRes.setBounds(340, 40, 100, 30);
 		contentPane.add(tOp1);
 		contentPane.add(tOp2);
 		contentPane.add(tRes);
 		
-		// LLENO TODOS LOS LISTENERS MEDIANTE ARRAY
+		// BOTONES
+		
+		JButton btn0 = new JButton("0");
+		btn0.setBounds(180, 280, 80, 30);
+		contentPane.add(btn0);
+		
+		JButton btn1 = new JButton("1");
+		btn1.setBounds(100, 100, 80, 30);
+		contentPane.add(btn1);
+		
+		JButton btn2 = new JButton("2");
+		btn2.setBounds(180, 100, 80, 30);
+		contentPane.add(btn2);
+		
+		JButton btn3 = new JButton("3");
+		btn3.setBounds(260, 100, 80, 30);
+		contentPane.add(btn3);
+		
+		JButton btn4 = new JButton("4");
+		btn4.setBounds(100, 160, 80, 30);
+		contentPane.add(btn4);
+		
+		JButton btn5 = new JButton("5");
+		btn5.setBounds(180, 160, 80, 30);
+		contentPane.add(btn5);
+		
+		JButton btn6 = new JButton("6");
+		btn6.setBounds(260, 160, 80, 30);
+		contentPane.add(btn6);
+		
+		JButton btn7 = new JButton("7");
+		btn7.setBounds(100, 220, 80, 30);
+		contentPane.add(btn7);
+		
+		JButton btn8 = new JButton("8");
+		btn8.setBounds(180, 220, 80, 30);
+		contentPane.add(btn8);
+		
+		JButton btn9 = new JButton("9");
+		btn9.setBounds(260, 220, 80, 30);
+		contentPane.add(btn9);
+		
+		JButton btnSuma = new JButton("+");
+		btnSuma.setBounds(360, 100, 80, 30);
+		contentPane.add(btnSuma);
+		
+		JButton btnResta = new JButton("-");
+		btnResta.setBounds(360, 160, 80, 30);
+		contentPane.add(btnResta);
+		
+		JButton btnMulti = new JButton("*");
+		btnMulti.setBounds(360, 220, 80, 30);
+		contentPane.add(btnMulti);
+		
+		JButton btnDiv = new JButton("/");
+		btnDiv.setBounds(360, 280, 80, 30);
+		contentPane.add(btnDiv);
+		
+		JButton btnRes = new JButton("=");
+		btnRes.setBounds(360, 380, 80, 30);
+		contentPane.add(btnRes);
+		
+		JButton[] arrayButtons = {btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnSuma, btnResta, btnMulti, btnDiv, btnRes};
+
+
 		
 
 		
+		// LLENO TODOS LOS LISTENERS MEDIANTE ARRAY
 	
 		for (int i = 0; i < arrayButtons.length; i++) {
 			int selected = i;
+			JButton btnSelected = arrayButtons[i];
+
 			arrayButtons[i].addActionListener(new ActionListener() {
 				public void actionPerformed (ActionEvent e) {
-					if (contador == 0) {
-						op1 = selected;
-						tOp1.setText(Integer.toString(selected));
-						contador++;
-					}
-					if (contador == 1) {
-						op2 = selected;
-						tOp2.setText(Integer.toString(selected));
-						contador++;
-					}
-					
-					if (contador ==2) {
-						int resultado = calcular(op1, op2);
-						tRes.setText(Integer.toString(resultado));
-					}
-					
+
+					btnText = btnSelected.getText();
+					checkContent(btnSelected);
+
 				}});
 		}
 

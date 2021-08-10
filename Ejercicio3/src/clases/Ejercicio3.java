@@ -33,6 +33,10 @@ public class Ejercicio3 extends JFrame {
 		JPanel checksPanel = new JPanel();
 		JPanel ticksPanel = new JPanel();
 		
+		sliderPanel.setBounds(100, 100, 400, 400);
+		sliderPanel.setBounds(100, 300, 400, 400);
+		sliderPanel.setBounds(100, 400, 400, 400);
+		
 		// CARGAMOS TODOS LOS FRAMES HIJO AL PRINCIPAL
 		
 		setContentPane(contentPane);
